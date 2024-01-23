@@ -4,6 +4,8 @@ This is stack ELK running with docker swarm for environment Test, Develop and Pr
 
 Reset password users stack, access container execute command below; 
 
+Example: docker exec -it id.container /bin/bash
+
 - elasticsearch-reset-password --username elastic
 - elasticsearch-reset-password --username kibana_system
 - elasticsearch-reset-password --username logstash_admin_user
