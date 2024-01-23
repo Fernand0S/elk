@@ -1,0 +1,20 @@
+version: '3.8'
+networks:
+  net:
+    driver: overlay
+    attachable: true
+services:
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.12.0
+    environment:
+      - server.port=5601
+      - server.host=0.0.0.0
+      - server.publicBaseUrl=http://{dns or ip}
+      - elasticsearch.hosts=http://{dns or ip}:9200
+
+    depends_on:
+      - elasticsearch
+    ports:
+      - "5601:5601"
+    networks:
+      - net
