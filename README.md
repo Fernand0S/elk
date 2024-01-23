@@ -4,9 +4,9 @@ This is stack ELK running with docker swarm for environment Test, Develop and Pr
 
 Reset password users stack, access container execute command below; 
 
-elasticsearch-reset-password --username elastic
-elasticsearch-reset-password --username kibana_system
-elasticsearch-reset-password --username logstash_admin_user
+- elasticsearch-reset-password --username elastic
+- elasticsearch-reset-password --username kibana_system
+- elasticsearch-reset-password --username logstash_admin_user
 
 "![1_vZDu4Bwj2GxQh8t1IjDq4w](https://github.com/Fernand0S/elk/assets/32446123/9b7b134d-b81d-41a0-895a-787216d992c3)"
 
