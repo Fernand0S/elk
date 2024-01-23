@@ -1,0 +1,32 @@
+version: '3.8'
+networks:
+  net:
+    driver: overlay
+    attachable: true
+services:
+  logstash:
+    image: docker.elastic.co/logstash/logstash:8.12.0-amd64
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "5000:5000"
+      - "9600:9600"
+    networks:
+      - net
+    depends_on:
+      - elasticsearch
+    volumes:
+      #- ${STACK_VOLUME}/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:rw
+      - ${STACK_VOLUME}/logstash/pipeline:/usr/share/logstash/pipeline:rw
+      - ${STACK_VOLUME}/logstash/data:/usr/share/logstash/data:rw
+      - ${STACK_VOLUME}/logstash/logs:/usr/share/logstash/logs:rw
+    environment:
+      - ELASTICSEARCH_HOSTS=elasticsearch:9200
+      - xpack.monitoring.elasticsearch.hosts=http://{dns or ip}:9200
+      - LS_JAVA_OPTS=-Xmx1g -Xms1g
+      - http.host=0.0.0.0
+      - xpack.monitoring.enabled=true
+      - xpack.monitoring.elasticsearch.username=$user.elastic
+      - xpack.monitoring.elasticsearch.password=password.elastic
