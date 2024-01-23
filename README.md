@@ -1,4 +1,4 @@
-# ELK - Elastic Search, Logstash and Kibana
+# ELK - Elasticsearch, Logstash and Kibana
 
 This is stack ELK running with docker swarm for environment Test, Develop and Production. 
 
