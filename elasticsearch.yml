@@ -15,8 +15,8 @@ services:
         condition: on-failure
     environment:
       - node.name=${HOSTNAME}
-      - cluster.name=elasticsearch #Name Cluster
-      - discovery.type=single-node
+      - cluster.name=elasticsearch #Name Cluster 
+      - discovery.type=single-node #Discovery Type Node
       - network.host=0.0.0.0  #Accept connections from hosts  
       - http.host=0.0.0.0 #Accept connections WEB
       - http.port=9200
