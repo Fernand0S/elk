@@ -1,0 +1,17 @@
+input {
+   beats{
+   port => 5044
+   }
+}
+
+filter {
+}
+
+output {
+   elasticsearch {
+   hosts => "http://elk.velonet.local:9200"
+   index => "filebeat-logs%{+YYYY.MM.DD}"
+   user => "elastic"
+   password => "X4HjrFyHuOCDebtD96ko"
+ }
+}
