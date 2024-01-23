@@ -1,0 +1,30 @@
+version: '3.8'
+networks:
+  net:
+    driver: overlay
+    attachable: true
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.0-amd64
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager 
+      restart_policy:
+        condition: on-failure
+    environment:
+      - node.name=${HOSTNAME}
+      - cluster.name=elasticsearch #Name Cluster
+      - discovery.type=single-node
+      - network.host=0.0.0.0  #Accept connections from hosts  
+      - http.host=0.0.0.0 #Accept connections WEB
+      - http.port=9200
+      - ES_JAVA_OPTS=-Xms4g -Xmx4g #Especications Resource Computer Memory. for but: https://forum.huawei.com/enterprise/en/what-s-the-difference-between-xmx-xms-and-xss-in-jvm/thread/667245580243582976-667213860102352896
+    volumes: 
+      - ${STACK_VOLUME}/elasticsearch/data:/usr/share/elasticsearch/data:rw
+      - ${STACK_VOLUME}/elasticsearch/logs:/usr/share/elasticsearch/logs:rw
+    ports:
+      - "9200:9200"
+    networks:
+      - net
