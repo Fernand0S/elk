@@ -11,7 +11,7 @@ services:
       - server.host=0.0.0.0
       - server.publicBaseUrl=http://{dns or ip}
       - elasticsearch.hosts=http://{dns or ip}:9200
-
+      - XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY=generate_key_min_32_caracters
     depends_on:
       - elasticsearch
     ports:
