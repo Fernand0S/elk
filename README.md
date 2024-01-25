@@ -14,7 +14,7 @@ Logstash is an open-source data ingestion tool that allows you to collect data f
 K = Kibana
 Kibana is a data visualization and exploration tool used for logging and time series analysis, application monitoring, and operational intelligence use cases. It offers powerful and easy-to-use features such as histograms, line charts, pie charts, heatmaps, and built-in geospatial support. Additionally, it provides tight integration with Elasticsearch, a popular search and analytics engine, which makes Kibana the default choice for visualizing data stored in Elasticsearch.
 
-Reset password users stack, access container execute command above; 
+Reset password users stack, access container execute command above:
 
 Example: docker exec -it id.container /bin/bash
 
